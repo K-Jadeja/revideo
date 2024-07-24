@@ -59,11 +59,11 @@ async function getVoiceByName(name: string) {
 }
 
 export async function getVideoScript(videoTopic: string) {
-  const prompt = `Create a script for a youtube short. The script should be around 60 to 80 words long and be an interesting text about the provided topic, and it should start with a catchy headline, something like "Did you know that?" or "This will blow your mind". Remember that this is for a voiceover that should be read, so things like hashtags should not be included. Now write the script for the following topic: "${videoTopic}". Now return the script and nothing else, also no meta-information - ONLY THE VOICEOVER.`;
+  const prompt = `Create a script for a youtube short. The script should be around 10-20 words long and be an interesting text about the provided topic, and it should start with a catchy headline, something like "Did you know that?" or "This will blow your mind". Remember that this is for a voiceover that should be read, so things like hashtags should not be included. Now write the script for the following topic: "${videoTopic}". Now return the script and nothing else, also no meta-information - ONLY THE VOICEOVER.`;
 
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'gpt-4-turbo-preview',
+    model: 'gpt-3.5-turbo',
   });
 
   const result = chatCompletion.choices[0].message.content;
